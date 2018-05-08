@@ -21,9 +21,8 @@ def ec2(ctx):
 @click.pass_context
 def describe_instances(ctx, instance_id):
     table = PrettyTable(['InstanceName', 'InstanceId', 'InstanceType'])
-    table.align['InstanceName'] = 'l'
-    table.align['InstanceId'] = 'l'
-    table.align['InstanceType'] = 'l'
+    table.align['InstanceName','InstanceId','InstanceType'] = 'l'
+
     response=[]
     instance_ids = [instance_id] if instance_id else []
     response = ctx.parent.params['client'].describe_instances(InstanceIds=instance_ids)
@@ -72,8 +71,8 @@ def describe_ami(ctx):
     images=[]
     sorted_ami=[]
     table = PrettyTable(['ImageName','CreateDate'])
-    table.align['ImageName'] = 'l'
-    table.align['CreateDate'] = 'l'
+    table.align['ImageName','CreateDate'] = 'l'
+
     try:
         images = ctx.parent.params['client'].describe_images(Owners=["self"])["Images"]
         for ami in sorted(images, key = lambda x:x['CreationDate']):
