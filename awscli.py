@@ -25,21 +25,17 @@ def describe_instances(ctx, instance_id):
     table.align['InstanceId'] = 'l'
     table.align['InstanceType'] = 'l'
     response=[]
-    instance_name=[]
-    instance_id=[]
-    instance_type=[]
     instance_ids = [instance_id] if instance_id else []
     response = ctx.parent.params['client'].describe_instances(InstanceIds=instance_ids)
     instance_count = len(response['Reservations'])
 
     for i in range(0, instance_count):
-        instance_name.append(response['Reservations'][i]['Instances'][0]['Tags'][0]['Value'])
-        instance_id.append(response['Reservations'][i]['Instances'][0]['InstanceId'])
-        instance_type.append(response['Reservations'][i]['Instances'][0]['InstanceType'])
-#        print(instance_info[i])
-        table.add_row([instance_name[i],instance_id[i],instance_type[i]])
+        table.add_row([
+                       response['Reservations'][i]['Instances'][0]['Tags'][0]['Value'],
+                       response['Reservations'][i]['Instances'][0]['InstanceId'],
+                       response['Reservations'][i]['Instances'][0]['InstanceType'],
+                      ])
     print (table)
-
 
 # EC2 start
 @ec2.command(help='EC2 RunInstances API')
@@ -56,7 +52,7 @@ def start_instances(ctx, instance_id):
     print('Finish')
 
 # EC2 stop
-@ec2.command(help='EC2 RunInstances API')
+@ec2.command(help='EC2 StopInstances API')
 @click.option('--instance-id', type=str, help='specify instance id')
 @click.pass_context
 def stop_instances(ctx, instance_id):
@@ -67,6 +63,27 @@ def stop_instances(ctx, instance_id):
     except:
         print('Error')
 
+    print('Finish')
+
+# AMI List
+@ec2.command(help='Amazon Linux Image List API')
+@click.pass_context
+def describe_ami(ctx):
+    images=[]
+    sorted_ami=[]
+    table = PrettyTable(['ImageName','CreateDate'])
+    table.align['ImageName'] = 'l'
+    table.align['CreateDate'] = 'l'
+    try:
+        images = ctx.parent.params['client'].describe_images(Owners=["self"])["Images"]
+        for ami in sorted(images, key = lambda x:x['CreationDate']):
+            sorted_ami.append(ami)
+
+        for i in range(0, len(sorted_ami)):
+            table.add_row([sorted_ami[i]['Name'],sorted_ami[i]['CreationDate']])
+        print(table)
+    except:
+        print('Error')
     print('Finish')
 
 if __name__ == '__main__':
