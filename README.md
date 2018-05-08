@@ -1,6 +1,6 @@
 ## README
 
-![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/aws/aws-..png)
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/aws/aws-python.png)
 
 勉強しながら作成中...
 
