@@ -58,12 +58,13 @@ def stop_instances(ctx, instance_id):
 def describe_ami(ctx):
     Modules.def_ec2.describe_ami(ctx)
 
-"""
 @ec2.command(help='Amazon Linux Image List API')
+@click.option('--instance-id', type=str, help='input instanceid')
+@click.option('--aminame', type=str, help='input aminame')
 @click.pass_context
-def create_ami(ctx):
-    Modules.def_ec2.
-"""
+def create_ami(ctx, instance_id, aminame):
+    Modules.def_ec2.create_ami(ctx, instance_id, aminame)
+
 
 ######################
 ##   S3 Function   ##

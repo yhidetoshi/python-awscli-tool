@@ -66,3 +66,20 @@ def describe_ami(ctx):
         print('Error')
 
     print('completed')
+
+## Create AMI ##
+def create_ami(ctx, instance_id, aminame):
+    instance_ids = instance_id
+    aminmaes = aminame
+
+    try:
+        response = ctx.parent.params['client'].create_image(
+            InstanceId = instance_ids,
+            Name = aminmaes,
+            Description = aminmaes,
+            NoReboot = True
+        )
+    except:
+        print('Error')
+
+    print('completed')
