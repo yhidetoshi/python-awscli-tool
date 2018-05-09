@@ -16,7 +16,14 @@
   > $ ./awscli.py ec2 stop_instances --instance-id=i-xxxxxxxxxxx
 
 ■ AMI一覧(作成順にソート)
-  > $ ./awscli.py ec2 describe_ami
+  > $ ./awscli.py ec2 describe_ami
+
+■ AMI作成(Register)
+  > $ ./awscli.py ec2 create_ami --imageid=ami-xxxxxxx
+
+■ AMI削除(Deregister)
+  > $ ./awscli.py ec2 delete_ami --imageid=ami-xxxxxxx
+
 ```
 
 ### S3
