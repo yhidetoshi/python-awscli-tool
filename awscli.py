@@ -8,6 +8,7 @@ import json
 # importモジュール(./Modules/に関数を実装)
 import Modules.def_ec2
 import Modules.def_s3
+import Modules.def_autoscaling
 
 @click.group(help='Subcommand click CLI')
 @click.option('-p', '--profile', type=str)
@@ -27,8 +28,15 @@ def ec2(ctx):
 def s3(ctx):
     ctx.params['client'] = ctx.parent.params['session'].resource('s3')
 
+## AutoScaling ##
+@main.group(help='AutoScaling API')
+@click.pass_context
+def asg(ctx):
+    ctx.params['client'] = ctx.parent.params['session'].client('autoscaling')
+
+
 ######################
-##   EC2 Function   ##
+##   EC2 Instance   ##
 ######################
 
 ## EC2 List ##
@@ -59,7 +67,7 @@ def describe_ami(ctx):
     Modules.def_ec2.describe_ami(ctx)
 
 ## AMI CreateAMI
-@ec2.command(help='Amazon Linux Image List API')
+@ec2.command(help='Amazon Linux Image Create API')
 @click.option('--instance-id', type=str, help='input instanceid')
 @click.option('--aminame', type=str, help='input aminame')
 @click.pass_context
@@ -67,11 +75,46 @@ def create_ami(ctx, instance_id, aminame):
     Modules.def_ec2.create_ami(ctx, instance_id, aminame)
 
 ## AMI DeleteAMI
-@ec2.command(help='Amazon Linux Image List API')
+@ec2.command(help='Amazon Linux Image Delete API')
 @click.option('--imageid', type=str, help='input imageid')
 @click.pass_context
 def delete_ami(ctx, imageid):
     Modules.def_ec2.delete_ami(ctx, imageid)
+
+######################
+##    AutoScaling   ##
+######################
+
+## AutoScaling(Describe) ##
+@asg.command(help='AutoScaling Describe API')
+#@click.option('--asg_name', type=str, help='input as name')
+@click.pass_context
+def describe_asg(ctx):
+    Modules.def_autoscaling.describe_asg(ctx)
+
+## AutoScaling(Update Max)
+@asg.command(help='AutoScaling Update Max API')
+@click.option('--asgname', type=str, help='update asgname')
+@click.option('--max', type=int, help='update max')
+@click.pass_context
+def update_max(ctx, asgname, max):
+    Modules.def_autoscaling.update_max(ctx, asgname, max)
+
+## AutoScaling(Update Min)
+@asg.command(help='AutoScaling Update Min API')
+@click.option('--asgname', type=str, help='update asgname')
+@click.option('--min', type=int, help='update min')
+@click.pass_context
+def update_min(ctx, asgname, min):
+    Modules.def_autoscaling.update_min(ctx, asgname, min)
+
+## AutoScaling(Update Desire)
+@asg.command(help='AutoScaling Update Desire API')
+@click.option('--asgname', type=str, help='update asgname')
+@click.option('--desire', type=int, help='update desire')
+@click.pass_context
+def update_desire(ctx, asgname, desire):
+    Modules.def_autoscaling.update_desire(ctx, asgname, desire)
 
 
 ######################
