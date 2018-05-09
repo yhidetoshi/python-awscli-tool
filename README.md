@@ -18,3 +18,9 @@
 ■ AMI一覧(作成順にソート)
   > $ ./awscli.py ec2 describe_ami
 ```
+
+### S3
+```
+■ バケット一覧
+  > $ ./awscli.py s3 list_buckets 
+```
