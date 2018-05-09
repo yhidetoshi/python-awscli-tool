@@ -32,6 +32,9 @@
 
 ■ AutoScaling Maxの変更
   > $ ./awscli.py asg update_max --asgname=ASGNAME --max=NUM
+
+■ AutoScaling Minの変更
+  > $ ./awscli.py asg update_min --asgname=ASGNAME --min=NUM
 ```
 
 ### S3
