@@ -67,7 +67,7 @@ def describe_ami(ctx):
 
     print('completed')
 
-## Create AMI ##
+## Create(Register) AMI ##
 def create_ami(ctx, instance_id, aminame):
     instance_ids = instance_id
     aminmaes = aminame
@@ -78,6 +78,19 @@ def create_ami(ctx, instance_id, aminame):
             Name = aminmaes,
             Description = aminmaes,
             NoReboot = True
+        )
+    except:
+        print('Error')
+
+    print('completed')
+
+## Delete(Deregister) AMI ##
+def delete_ami(ctx, imageid):
+    imageids = imageid
+
+    try:
+        response = ctx.parent.params['client'].deregister_image(
+            ImageId = imageids,
         )
     except:
         print('Error')
