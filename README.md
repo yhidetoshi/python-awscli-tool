@@ -23,7 +23,12 @@
 
 ■ AMI削除(Deregister)
   > $ ./awscli.py ec2 delete_ami --imageid=ami-xxxxxxx
+```
 
+### AutoScaling
+```
+■ AutoScaling情報一覧
+  > $ ./awscli.py asg describe_asg
 ```
 
 ### S3
