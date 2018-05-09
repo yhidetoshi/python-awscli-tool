@@ -5,7 +5,7 @@ import click
 import boto3
 import json
 
-# importモジュール
+# importモジュール(./Modules/に関数を実装)
 import Modules.def_ec2
 import Modules.def_s3
 
@@ -15,11 +15,13 @@ import Modules.def_s3
 def main(ctx, profile):
     ctx.params['session'] = boto3.session.Session(profile_name=ctx.params.get('profile'))
 
+## EC2 ##
 @main.group(help='EC2 API')
 @click.pass_context
 def ec2(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('ec2')
 
+## S3 ##
 @main.group(help='S3 API')
 @click.pass_context
 def s3(ctx):
@@ -55,6 +57,13 @@ def stop_instances(ctx, instance_id):
 @click.pass_context
 def describe_ami(ctx):
     Modules.def_ec2.describe_ami(ctx)
+
+"""
+@ec2.command(help='Amazon Linux Image List API')
+@click.pass_context
+def create_ami(ctx):
+    Modules.def_ec2.
+"""
 
 ######################
 ##   S3 Function   ##

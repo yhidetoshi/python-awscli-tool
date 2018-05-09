@@ -34,7 +34,7 @@ def start_instances(ctx, instance_id):
     except:
         print('Error')
 
-    print('Finish')
+    print('completed')
 
 ## stop-instance ##
 def stop_instances(ctx, instance_id):
@@ -45,7 +45,7 @@ def stop_instances(ctx, instance_id):
     except:
         print('Error')
 
-    print('Finish')
+    print('completed')
 
 ## AMI List ##
 def describe_ami(ctx):
@@ -64,4 +64,5 @@ def describe_ami(ctx):
         print(table)
     except:
         print('Error')
-    print('Finish')
+
+    print('completed')
