@@ -5,16 +5,22 @@ import click
 import boto3
 import json
 
-# importモジュール(./Modules/に関数を実装)
+## importモジュール(./Modules/に関数を実装) ##
 import Modules.def_ec2
 import Modules.def_s3
 import Modules.def_autoscaling
+import Modules.def_route53
 
+## CLI Profile ##
 @click.group(help='Subcommand click CLI')
 @click.option('-p', '--profile', type=str)
 @click.pass_context
 def main(ctx, profile):
     ctx.params['session'] = boto3.session.Session(profile_name=ctx.params.get('profile'))
+
+######################
+##  Create Session  ##
+######################
 
 ## EC2 ##
 @main.group(help='EC2 API')
@@ -34,6 +40,11 @@ def s3(ctx):
 def asg(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('autoscaling')
 
+## Route53 ##
+@main.group(help='Route53 API')
+@click.pass_context
+def route53(ctx):
+    ctx.params['client'] = ctx.parent.params['session'].client('route53')
 
 ######################
 ##   EC2 Instance   ##
@@ -66,7 +77,7 @@ def stop_instances(ctx, instance_id):
 def describe_ami(ctx):
     Modules.def_ec2.describe_ami(ctx)
 
-## AMI CreateAMI
+## AMI CreateAMI ##
 @ec2.command(help='Amazon Linux Image Create API')
 @click.option('--instance-id', type=str, help='input instanceid')
 @click.option('--aminame', type=str, help='input aminame')
@@ -74,7 +85,7 @@ def describe_ami(ctx):
 def create_ami(ctx, instance_id, aminame):
     Modules.def_ec2.create_ami(ctx, instance_id, aminame)
 
-## AMI DeleteAMI
+## AMI DeleteAMI ##
 @ec2.command(help='Amazon Linux Image Delete API')
 @click.option('--imageid', type=str, help='input imageid')
 @click.pass_context
@@ -92,7 +103,7 @@ def delete_ami(ctx, imageid):
 def describe_asg(ctx):
     Modules.def_autoscaling.describe_asg(ctx)
 
-## AutoScaling(Update Max)
+## AutoScaling(Update Max) ##
 @asg.command(help='AutoScaling Update Max API')
 @click.option('--asgname', type=str, help='update asgname')
 @click.option('--max', type=int, help='update max')
@@ -100,7 +111,7 @@ def describe_asg(ctx):
 def update_max(ctx, asgname, max):
     Modules.def_autoscaling.update_max(ctx, asgname, max)
 
-## AutoScaling(Update Min)
+## AutoScaling(Update Min) ##
 @asg.command(help='AutoScaling Update Min API')
 @click.option('--asgname', type=str, help='update asgname')
 @click.option('--min', type=int, help='update min')
@@ -108,13 +119,30 @@ def update_max(ctx, asgname, max):
 def update_min(ctx, asgname, min):
     Modules.def_autoscaling.update_min(ctx, asgname, min)
 
-## AutoScaling(Update Desire)
+## AutoScaling(Update Desire) ##
 @asg.command(help='AutoScaling Update Desire API')
 @click.option('--asgname', type=str, help='update asgname')
 @click.option('--desire', type=int, help='update desire')
 @click.pass_context
 def update_desire(ctx, asgname, desire):
     Modules.def_autoscaling.update_desire(ctx, asgname, desire)
+
+######################
+##     Route53      ##
+######################
+
+## Route53 List Zones ##
+@route53.command(help='Route53 API')
+@click.pass_context
+def describe_zones(ctx):
+    Modules.def_route53.describe_zones(ctx)
+
+## Route53 List Records ##
+@route53.command(help='Route53 List recoard')
+@click.option('--zone-id', type=str, help='update asgname')
+@click.pass_context
+def describe_records(ctx, zone_id):
+    Modules.def_route53.describe_records(ctx, zone_id)
 
 
 ######################
