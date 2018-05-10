@@ -40,6 +40,14 @@
   > $ ./awscli.py asg update_desire --asgname=ASGNAME --desire=NUM
 ```
 
+### Route53
+```
+■ Zone一覧
+  > $ ./awscli.py route53 describe_zones
+■ Zoneid指定のレコード情報取得
+  > $ ./awscli.py route53 describe_records --zone-id=ID
+```
+
 ### S3
 ```
 ■ バケット一覧
