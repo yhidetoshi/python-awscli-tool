@@ -2,7 +2,15 @@
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/aws/aws-python.png)
 
-勉強しながら作成中...
+作成中...
+
+- Pythonについて
+  - Python 3.6.5(virtualenvを利用)
+  
+- 使い方
+  - $ `git clone https://github.com/yhidetoshi/python-awscli-tool`
+  - $ `pip install sys prettytable click boto3 json tqdm time`
+  - awscli.pyをコマンドオプションをつけて実行する
 
 ### EC2
 ```
@@ -38,6 +46,14 @@
 
 ■ AutoScaling Desireの変更
   > $ ./awscli.py asg update_desire --asgname=ASGNAME --desire=NUM
+```
+
+### Route53
+```
+■ Zone一覧
+  > $ ./awscli.py route53 describe_zones
+■ Zoneid指定のレコード情報取得
+  > $ ./awscli.py route53 describe_records --zone-id=ID
 ```
 
 ### S3
