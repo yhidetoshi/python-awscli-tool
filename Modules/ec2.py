@@ -47,6 +47,17 @@ def stop_instances(ctx, instance_id):
 
     print('completed')
 
+## terminate-instance ##
+def terminate_instances(ctx, instance_id):
+    instance_ids = [instance_id]
+    try:
+        ctx.parent.params['client'].terminate_instances(InstanceIds=instance_ids)
+        print('Terminate Success')
+    except:
+        print('Error')
+
+    print('completed')
+
 ## AMI List ##
 def describe_ami(ctx):
     images=[]

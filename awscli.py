@@ -71,6 +71,14 @@ def start_instances(ctx, instance_id):
 def stop_instances(ctx, instance_id):
     Modules.ec2.stop_instances(ctx, instance_id)
 
+## EC2 terminate ##
+@ec2.command(help='EC2 TerminateInstances API')
+@click.option('--instance-id', type=str, help='specify instance id')
+@click.pass_context
+def terminate_instances(ctx, instance_id):
+    Modules.ec2.terminate_instances(ctx, instance_id)
+
+
 ## AMI List ##
 @ec2.command(help='Amazon Linux Image List API')
 @click.pass_context
