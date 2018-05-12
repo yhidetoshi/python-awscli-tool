@@ -6,10 +6,10 @@ import boto3
 import json
 
 ## importモジュール(./Modules/に関数を実装) ##
-import Modules.def_ec2
-import Modules.def_s3
-import Modules.def_autoscaling
-import Modules.def_route53
+import Modules.ec2
+import Modules.s3
+import Modules.autoscaling
+import Modules.route53
 
 ## CLI Profile ##
 @click.group(help='Subcommand click CLI')
@@ -55,27 +55,27 @@ def route53(ctx):
 @click.option('--instance-id', type=str, help='specify instance id')
 @click.pass_context
 def describe_instances(ctx, instance_id):
-    Modules.def_ec2.describe_instances(ctx, instance_id)
+    Modules.ec2.describe_instances(ctx, instance_id)
 
 ## EC2 start ##
 @ec2.command(help='EC2 RunInstances API')
 @click.option('--instance-id', type=str, help='specify instance id')
 @click.pass_context
 def start_instances(ctx, instance_id):
-    Modules.def_ec2.start_instances(ctx, instance_id)
+    Modules.ec2.start_instances(ctx, instance_id)
 
 ## EC2 stop ##
 @ec2.command(help='EC2 StopInstances API')
 @click.option('--instance-id', type=str, help='specify instance id')
 @click.pass_context
 def stop_instances(ctx, instance_id):
-    Modules.def_ec2.stop_instances(ctx, instance_id)
+    Modules.ec2.stop_instances(ctx, instance_id)
 
 ## AMI List ##
 @ec2.command(help='Amazon Linux Image List API')
 @click.pass_context
 def describe_ami(ctx):
-    Modules.def_ec2.describe_ami(ctx)
+    Modules.ec2.describe_ami(ctx)
 
 ## AMI CreateAMI ##
 @ec2.command(help='Amazon Linux Image Create API')
@@ -83,14 +83,14 @@ def describe_ami(ctx):
 @click.option('--aminame', type=str, help='input aminame')
 @click.pass_context
 def create_ami(ctx, instance_id, aminame):
-    Modules.def_ec2.create_ami(ctx, instance_id, aminame)
+    Modules.ec2.create_ami(ctx, instance_id, aminame)
 
 ## AMI DeleteAMI ##
 @ec2.command(help='Amazon Linux Image Delete API')
 @click.option('--imageid', type=str, help='input imageid')
 @click.pass_context
 def delete_ami(ctx, imageid):
-    Modules.def_ec2.delete_ami(ctx, imageid)
+    Modules.ec2.delete_ami(ctx, imageid)
 
 ######################
 ##    AutoScaling   ##
@@ -101,7 +101,7 @@ def delete_ami(ctx, imageid):
 #@click.option('--asg_name', type=str, help='input as name')
 @click.pass_context
 def describe_asg(ctx):
-    Modules.def_autoscaling.describe_asg(ctx)
+    Modules.autoscaling.describe_asg(ctx)
 
 ## AutoScaling(Update Max) ##
 @asg.command(help='AutoScaling Update Max API')
@@ -109,7 +109,7 @@ def describe_asg(ctx):
 @click.option('--max', type=int, help='update max')
 @click.pass_context
 def update_max(ctx, asgname, max):
-    Modules.def_autoscaling.update_max(ctx, asgname, max)
+    Modules.autoscaling.update_max(ctx, asgname, max)
 
 ## AutoScaling(Update Min) ##
 @asg.command(help='AutoScaling Update Min API')
@@ -117,7 +117,7 @@ def update_max(ctx, asgname, max):
 @click.option('--min', type=int, help='update min')
 @click.pass_context
 def update_min(ctx, asgname, min):
-    Modules.def_autoscaling.update_min(ctx, asgname, min)
+    Modules.autoscaling.update_min(ctx, asgname, min)
 
 ## AutoScaling(Update Desire) ##
 @asg.command(help='AutoScaling Update Desire API')
@@ -125,7 +125,7 @@ def update_min(ctx, asgname, min):
 @click.option('--desire', type=int, help='update desire')
 @click.pass_context
 def update_desire(ctx, asgname, desire):
-    Modules.def_autoscaling.update_desire(ctx, asgname, desire)
+    Modules.autoscaling.update_desire(ctx, asgname, desire)
 
 ######################
 ##     Route53      ##
@@ -135,14 +135,14 @@ def update_desire(ctx, asgname, desire):
 @route53.command(help='Route53 API')
 @click.pass_context
 def describe_zones(ctx):
-    Modules.def_route53.describe_zones(ctx)
+    Modules.route53.describe_zones(ctx)
 
 ## Route53 List Records ##
 @route53.command(help='Route53 List recoard')
 @click.option('--zone-id', type=str, help='update asgname')
 @click.pass_context
 def describe_records(ctx, zone_id):
-    Modules.def_route53.describe_records(ctx, zone_id)
+    Modules.route53.describe_records(ctx, zone_id)
 
 
 ######################
@@ -153,7 +153,7 @@ def describe_records(ctx, zone_id):
 @s3.command(help='S3 List API')
 @click.pass_context
 def list_buckets(ctx):
-    Modules.def_s3.list_buckets(ctx)
+    Modules.s3.list_buckets(ctx)
 
 if __name__ == '__main__':
     main()

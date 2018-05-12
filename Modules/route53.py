@@ -33,6 +33,7 @@ def describe_records(ctx, zone_id):
     )
     #print(response)
 
+    # 暫定の出力表示...
     print("| Type |    Name   |   TTL |   Value   |")
     for i in range(0, len(response['ResourceRecordSets'])):
         print("| "+response['ResourceRecordSets'][i]['Type']+ " | ", end="")

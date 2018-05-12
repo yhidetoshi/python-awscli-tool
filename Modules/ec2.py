@@ -15,14 +15,14 @@ def describe_instances(ctx, instance_id):
     response = ctx.parent.params['client'].describe_instances(InstanceIds=instance_ids)
     instance_count = len(response['Reservations'])
 
-    for i in tqdm(range(0, instance_count)):
-    #for i in range(0, instance_count):
+    #for i in tqdm(range(0, instance_count)): # tqdmテスト用
+    for i in range(0, instance_count):
         table.add_row([
                        response['Reservations'][i]['Instances'][0]['Tags'][0]['Value'],
                        response['Reservations'][i]['Instances'][0]['InstanceId'],
                        response['Reservations'][i]['Instances'][0]['InstanceType'],
                       ])
-        time.sleep(0.02)
+        #time.sleep(0.02) # tqdmテスト用
     print (table)
 
 ## start-Instance ##
