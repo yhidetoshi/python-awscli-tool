@@ -8,8 +8,9 @@
   - Python 3.6.5(virtualenvを利用)
   
 - 使い方
-  - $ `git clone https://github.com/yhidetoshi/python-awscli-tool`
-  - $ `pip install sys prettytable click boto3 json tqdm time`
+  - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
+  - `$ cd python-awscli-tool`
+  - `$ pip install sys prettytable click boto3 json tqdm time`
   - awscli.pyをコマンドオプションをつけて実行する
 
 ### EC2
@@ -22,6 +23,9 @@
 
 ■ Instance停止
   > $ ./awscli.py ec2 stop_instances --instance-id=i-xxxxxxxxxxx
+
+■ Instance削除
+  > $ ./awscli.py ec2 terminate_instances --instance-id=i-xxxxxxxxxxx
 
 ■ AMI一覧(作成順にソート)
   > $ ./awscli.py ec2 describe_ami
