@@ -17,7 +17,9 @@
 ```
 ■ Instance一覧
   > $ ./awscli.py ec2 describe_instances
-
+    ■ profileの場合
+    > $ ./awscli.py -p <PROFILENAME> ec2 describe_instances
+  
 ■ Instance起動
   > $ ./awscli.py ec2 run_instances --instance-id=i-xxxxxxxxxxx
 
