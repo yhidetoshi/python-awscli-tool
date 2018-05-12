@@ -34,7 +34,7 @@ def start_instances(ctx, instance_id):
     except:
         print('Error')
 
-    print('completed')
+    print('End')
 
 ## stop-instance ##
 def stop_instances(ctx, instance_id):
@@ -45,7 +45,7 @@ def stop_instances(ctx, instance_id):
     except:
         print('Error')
 
-    print('completed')
+    print('End')
 
 ## terminate-instance ##
 def terminate_instances(ctx, instance_id):
@@ -76,7 +76,7 @@ def describe_ami(ctx):
     except:
         print('Error')
 
-    print('completed')
+    print('End')
 
 ## Create(Register) AMI ##
 def create_ami(ctx, instance_id, aminame):
@@ -93,7 +93,7 @@ def create_ami(ctx, instance_id, aminame):
     except:
         print('Error')
 
-    print('completed')
+    print('End')
 
 ## Delete(Deregister) AMI ##
 def delete_ami(ctx, imageid):
@@ -106,4 +106,4 @@ def delete_ami(ctx, imageid):
     except:
         print('Error')
 
-    print('completed')
+    print('End')

@@ -10,6 +10,7 @@ import Modules.ec2
 import Modules.s3
 import Modules.autoscaling
 import Modules.route53
+import Modules.rds
 
 ## CLI Profile ##
 @click.group(help='Subcommand click CLI')
@@ -46,6 +47,12 @@ def asg(ctx):
 def route53(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('route53')
 
+## RDS ##
+@main.group(help='RDS API')
+@click.pass_context
+def rds(ctx):
+    ctx.params['client'] = ctx.parent.params['session'].client('rds')
+
 ######################
 ##   EC2 Instance   ##
 ######################
@@ -76,7 +83,7 @@ def stop_instances(ctx, instance_id):
 @click.option('--instance-id', type=str, help='specify instance id')
 @click.pass_context
 def terminate_instances(ctx, instance_id):
-    Modules.ec2.terminate_instances(ctx, instance_id)
+    Modules.ec2.ter_instances(ctx, instance_id)
 
 
 ## AMI List ##
@@ -99,6 +106,31 @@ def create_ami(ctx, instance_id, aminame):
 @click.pass_context
 def delete_ami(ctx, imageid):
     Modules.ec2.delete_ami(ctx, imageid)
+
+######################
+##    RDS   ##
+######################
+
+## RDSインスタンス一覧 ##
+@rds.command(help='RDS RunInstances API')
+@click.pass_context
+def describe_instances(ctx):
+    Modules.rds.describe_instances(ctx)
+
+## RDS start ##
+@rds.command(help='RDS RunInstances API')
+@click.option('--name', type=str, help='specify instance id')
+@click.pass_context
+def start_instances(ctx, name):
+    Modules.rds.start_instances(ctx, name)
+
+## RDS stop ##
+@rds.command(help='RDS RunInstances API')
+@click.option('--name', type=str, help='specify instance id')
+@click.pass_context
+def stop_instances(ctx, name):
+    Modules.rds.stop_instances(ctx, name)
+
 
 ######################
 ##    AutoScaling   ##

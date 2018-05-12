@@ -23,7 +23,7 @@ def describe_asg(ctx):
         print('Error')
 
     print(table)
-    print('completed')
+    print('End')
 
 ## AutoScaling(Update Max) ##
 def update_max(ctx, asgname, max):
@@ -35,7 +35,7 @@ def update_max(ctx, asgname, max):
     except:
         print('Error')
 
-    print('completed')
+    print('End')
 
 ## AutoScaling(Update Min) ##
 def update_min(ctx, asgname, min):
@@ -47,7 +47,7 @@ def update_min(ctx, asgname, min):
     except:
         print('Error')
 
-    print('completed')
+    print('End')
 
 ## AutoScaling(Update Desire) ##
 def update_desire(ctx, asgname, desire):
@@ -59,4 +59,4 @@ def update_desire(ctx, asgname, desire):
     except:
         print('Error')
 
-    print('completed')
+    print('End')

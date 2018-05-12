@@ -17,4 +17,4 @@ def list_buckets(ctx):
         print('Error')
 
     print(table)
-    print('completed')
+    print('End')

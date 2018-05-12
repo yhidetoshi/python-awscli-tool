@@ -20,7 +20,7 @@ def describe_zones(ctx):
         print('Error')
 
     print(table)
-    print('completed')
+    print('End')
 
 
 def describe_records(ctx, zone_id):
