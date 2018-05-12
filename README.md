@@ -54,6 +54,20 @@
   > $ ./awscli.py asg update_desire --asgname=ASGNAME --desire=NUM
 ```
 
+### RDS
+```
+■ インスタンス一覧
+  > $ ./awscli.py rds describe_instances
+
+■ インスタンス起動
+  > $ ./awscli.py rds start_instances --name={DBInstanceIdentifier}
+
+■ インスタンス停止
+  > $ ./awscli.py rds stop_instances --name={DBInstanceIdentifier} 
+```
+
+
+
 ### Route53
 ```
 ■ Zone一覧
