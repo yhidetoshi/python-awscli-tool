@@ -12,7 +12,10 @@
   - `$ pip install sys prettytable click boto3 json tqdm time`
   - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
-
+- 参考
+  - boto3: https://boto3.readthedocs.io/en/latest/
+  - click: http://click.pocoo.org/5/api/
+ 
 - **`$ ./awscli.py --help`**
 ```
 Usage: awscli.py [OPTIONS] COMMAND [ARGS]...
