@@ -7,6 +7,7 @@
   - Python 3x系だと動くと思います
   
 - [準備]
+  - python 3系をインストール
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
   - `$ cd python-awscli-tool`
   - `$ pip install sys prettytable click boto3 json tqdm time`
