@@ -1,4 +1,4 @@
-## README
+# README
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/aws/aws-python.png)
 
@@ -6,14 +6,14 @@
   - Python 3.6.5 と boto3(1.7.11)実装
   - Python 3x系だと動くと思います
   
-- [準備]
+#### [準備]
   - python 3系をインストール
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
   - `$ cd python-awscli-tool`
   - `$ pip install sys prettytable click boto3 json tqdm time`
   - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
-- [参考]
+#### [参考]
   - boto3
     - https://boto3.readthedocs.io/en/latest/
   - click
@@ -21,6 +21,7 @@
   - aws-sdk-goで独自実装した版はこちら
     - https://github.com/yhidetoshi/go-awscli-tool
  
+#### [コマンド help1]
 - **`$ ./awscli.py --help`**
 ```
 Usage: awscli.py [OPTIONS] COMMAND [ARGS]...
@@ -38,6 +39,7 @@ Commands:
   route53  Route53 API
   s3       S3 API
 ```
+#### [コマンド help2]
 
 - **`$ ./awscli.py ec2 --help`**
 ```
