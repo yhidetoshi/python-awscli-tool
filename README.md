@@ -13,6 +13,44 @@
   - `$ pip install sys prettytable click boto3 json tqdm time`
   - awscli.pyをコマンドオプションをつけて実行する
 
+
+- `$ ./awscli.py --help`
+```
+Usage: awscli.py [OPTIONS] COMMAND [ARGS]...
+
+  Subcommand click CLI
+
+Options:
+  -p, --profile TEXT
+  --help              Show this message and exit.
+
+Commands:
+  asg      AutoScaling API
+  ec2      EC2 API
+  rds      RDS API
+  route53  Route53 API
+  s3       S3 API
+```
+
+- `$ ./awscli.py ec2 --help`
+```
+Usage: awscli.py ec2 [OPTIONS] COMMAND [ARGS]...
+
+  EC2 API
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  create_ami           Amazon Linux Image Create API
+  delete_ami           Amazon Linux Image Delete API
+  describe_ami         Amazon Linux Image List API
+  describe_instances   EC2 DescribeInstances API
+  start_instances      EC2 RunInstances API
+  stop_instances       EC2 StopInstances API
+  terminate_instances  EC2 TerminateInstances API
+```
+
 ### EC2
 ```
 ■ Instance一覧
