@@ -2,9 +2,8 @@
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/aws/aws-python.png)
 
-
 - [Pythonについて]
-  - Python 3.6.5(virtualenvを利用)で実装
+  - Python 3.6.5 と boto3(1.7.11)実装
   - Python 3x系だと動くと思います
   
 - [準備]
