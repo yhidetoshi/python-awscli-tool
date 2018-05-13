@@ -3,16 +3,16 @@
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/aws/aws-python.png)
 
 
-- Pythonについて
+- [Pythonについて]
   - Python 3.6.5(virtualenvを利用)で実装している
   
-- 準備
+- [準備]
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
   - `$ cd python-awscli-tool`
   - `$ pip install sys prettytable click boto3 json tqdm time`
   - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
-- 参考
+- [参考]
   - boto3: https://boto3.readthedocs.io/en/latest/
   - click: http://click.pocoo.org/5/api/
  
