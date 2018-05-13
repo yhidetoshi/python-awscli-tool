@@ -13,8 +13,12 @@
   - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
 - [参考]
-  - boto3: https://boto3.readthedocs.io/en/latest/
-  - click: http://click.pocoo.org/5/api/
+  - boto3
+    - https://boto3.readthedocs.io/en/latest/
+  - click
+    - http://click.pocoo.org/5/api/
+  - aws-sdk-goで独自実装した版はこちら
+    - https://github.com/yhidetoshi/go-awscli-tool
  
 - **`$ ./awscli.py --help`**
 ```
