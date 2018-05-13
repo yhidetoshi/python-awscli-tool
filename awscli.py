@@ -6,11 +6,7 @@ import boto3
 import json
 
 ## importモジュール(./Modules/に関数を実装) ##
-import Modules.ec2
-import Modules.s3
-import Modules.autoscaling
-import Modules.route53
-import Modules.rds
+import Modules
 
 ## CLI Profile ##
 @click.group(help='Subcommand click CLI')
