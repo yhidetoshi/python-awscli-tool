@@ -4,13 +4,13 @@
 
 
 - Pythonについて
-  - Python 3.6.5(virtualenvを利用)
-  
+  - Python 3.6.5(virtualenvを利用)で実装している
+  
 - 準備
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
   - `$ cd python-awscli-tool`
   - `$ pip install sys prettytable click boto3 json tqdm time`
-  - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
+  - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
 
 - **`$ ./awscli.py --help`**
