@@ -14,7 +14,7 @@
   - awscli.pyをコマンドオプションをつけて実行する
 
 
-- `$ ./awscli.py --help`
+- **`$ ./awscli.py --help`**
 ```
 Usage: awscli.py [OPTIONS] COMMAND [ARGS]...
 
@@ -32,7 +32,7 @@ Commands:
   s3       S3 API
 ```
 
-- `$ ./awscli.py ec2 --help`
+- **`$ ./awscli.py ec2 --help`**
 ```
 Usage: awscli.py ec2 [OPTIONS] COMMAND [ARGS]...
 
