@@ -4,7 +4,8 @@
 
 
 - [Pythonについて]
-  - Python 3.6.5(virtualenvを利用)で実装している
+  - Python 3.6.5(virtualenvを利用)で実装している
+  - Python 3x系だと動くと思います
   
 - [準備]
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
