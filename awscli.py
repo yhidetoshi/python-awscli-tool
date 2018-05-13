@@ -12,7 +12,8 @@ import Modules
 @click.group(help='Subcommand click CLI')
 @click.option('-p', '--profile', type=str)
 @click.pass_context
-def main(ctx, profile):
+#def main(ctx, profile):
+def cli(ctx, profile):
     ctx.params['session'] = boto3.session.Session(profile_name=ctx.params.get('profile'))
 
 ######################
@@ -20,34 +21,35 @@ def main(ctx, profile):
 ######################
 
 ## EC2 ##
-@main.group(help='EC2 API')
+@cli.group(help='EC2 API')
 @click.pass_context
 def ec2(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('ec2')
 
 ## S3 ##
-@main.group(help='S3 API')
+@cli.group(help='S3 API')
 @click.pass_context
 def s3(ctx):
     ctx.params['client'] = ctx.parent.params['session'].resource('s3')
 
 ## AutoScaling ##
-@main.group(help='AutoScaling API')
+@cli.group(help='AutoScaling API')
 @click.pass_context
 def asg(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('autoscaling')
 
 ## Route53 ##
-@main.group(help='Route53 API')
+@cli.group(help='Route53 API')
 @click.pass_context
 def route53(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('route53')
 
 ## RDS ##
-@main.group(help='RDS API')
+@cli.group(help='RDS API')
 @click.pass_context
 def rds(ctx):
     ctx.params['client'] = ctx.parent.params['session'].client('rds')
+
 
 ######################
 ##   EC2 Instance   ##
@@ -108,20 +110,20 @@ def delete_ami(ctx, imageid):
 ######################
 
 ## RDSインスタンス一覧 ##
-@rds.command(help='RDS RunInstances API')
+@rds.command(help='RDS RunInstances describe API')
 @click.pass_context
 def describe_instances(ctx):
     Modules.rds.describe_instances(ctx)
 
 ## RDS start ##
-@rds.command(help='RDS RunInstances API')
+@rds.command(help='RDS RunInstances start API')
 @click.option('--name', type=str, help='specify instance id')
 @click.pass_context
 def start_instances(ctx, name):
     Modules.rds.start_instances(ctx, name)
 
 ## RDS stop ##
-@rds.command(help='RDS RunInstances API')
+@rds.command(help='RDS RunInstances stop API')
 @click.option('--name', type=str, help='specify instance id')
 @click.pass_context
 def stop_instances(ctx, name):
@@ -191,5 +193,7 @@ def describe_records(ctx, zone_id):
 def list_buckets(ctx):
     Modules.s3.list_buckets(ctx)
 
+
 if __name__ == '__main__':
-    main()
+#    main()
+    cli()
