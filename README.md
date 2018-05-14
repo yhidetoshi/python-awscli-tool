@@ -10,7 +10,7 @@
   - python 3系をインストール
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
   - `$ cd python-awscli-tool`
-  - `$ pip install prettytable click boto3 json tqdm time`
+  - `$ pip install prettytable click boto3 json tqdm`
   - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
 #### [参考]
