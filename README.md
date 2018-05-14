@@ -10,7 +10,7 @@
   - python 3系をインストール
   - `$ git clone https://github.com/yhidetoshi/python-awscli-tool`
   - `$ cd python-awscli-tool`
-  - `$ pip install sys prettytable click boto3 json tqdm time`
+  - `$ pip install prettytable click boto3 json tqdm time`
   - awscli.pyをコマンドオプションをつけて実行する(実行オプションは以下に記載)
 
 #### [参考]
@@ -74,13 +74,13 @@ Commands:
   > $ ./awscli.py ec2 stop_instances --instance-id=i-xxxxxxxxxxx
 
 ■ Instance削除
-  > $ ./awscli.py ec2 terminate_instances --instance-id=i-xxxxxxxxxxx
+  > $ ./awscli.py ec2 terminate_instances --instance-id=i-xxxxxxxxxxx 
 
 ■ AMI一覧(作成順にソート)
   > $ ./awscli.py ec2 describe_ami
 
 ■ AMI作成(Register)
-  > $ ./awscli.py ec2 create_ami --imageid=ami-xxxxxxx
+  > $ ./awscli.py ec2 create_ami --imageid=ami-xxxxxxx --aminame=NAME
 
 ■ AMI削除(Deregister)
   > $ ./awscli.py ec2 delete_ami --imageid=ami-xxxxxxx
